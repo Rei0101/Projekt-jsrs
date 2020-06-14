@@ -9,6 +9,8 @@ import {
 import Prva from './Components/Prva.js';
 import Druga from './Components/Druga.js';
 import Treca from './Components/Treca.js';
+import Cetvrta from './Components/Cetvrta.js';
+import Peta from './Components/Peta.js';
   
 
 function App() {
@@ -20,7 +22,8 @@ function App() {
         <Route exact path="/" component={Prva}></Route>
         <Route path ="/druga" component={Druga}></Route>
         <Route path ="/treca" component={Treca}></Route>
-
+        <Route path ="/cetvrta" component={Cetvrta}></Route>
+        <Route path ="/peta" component={Peta}></Route>
       </Router>
       
 

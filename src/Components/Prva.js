@@ -1,44 +1,28 @@
-import React from 'react';
+import React, {Component} from "react";
 import {Link} from 'react-router-dom';
-import Slika from '../keanu.jpg';
+import Slika from '../keanujaketa.jpg';
 
-
-function Prva() {
-  const poz="Evo neki tekst za prikazati";
-    return (
-      <div className="prva">
-        <img src={Slika}></img><br></br>
-        {poz}
-        <table>
-        <tr>
-          <td>
-            <Link className="link" to='/druga'>Na drugu stranicu</Link>
-          </td>
-          <td>
-            <Link className="link" to='/treca'>Na trecu str</Link>
-          </td>
-        </tr>
-        </table>
-        <Nova value={poz}></Nova>
-      </div>
-    );
-  }
-function Nova(props){
-  const novo="Evo nekog novog teksta za prikazati";
-  return (
-          <div>
-            {props.value}
-          </div>
-    );
+export class Prva extends Component{
+  state={
+    ime: '',
+    prezime: ''
   }
 
-  //moze se i ovako ovo gori
- /* function Nova({value}){
-    const novo="Evo nekog novog teksta za prikazati";
-    return (
-            <div>
-              {value}
-            </div>
-      );
-    }*/
+  render()
+  {
+    return(
+    <div>
+      <h1 className="promjenjivo">Danas će {this.state.ime} {this.state.prezime} saznati više o Keanu Reevesu.</h1>
+      <form>
+      <input placeholder='ime' value={this.state.ime} onChange={e=>this.setState({ime:e.target.value})}/><br></br><br></br>
+      <input placeholder='prezime' value={this.state.prezime} onChange={e=>this.setState({prezime:e.target.value})}/><br></br><br></br>
+      <input type="password" placeholder="lozinka" name="Password "></input><br></br><br></br>
+      Potvrdi da nisi robot:<input type="checkbox"></input><br></br><br></br>
+      <Link className="link" to='/druga'><button>Nastavi</button></Link><br></br><br></br>
+    </form><br></br>
+    <img className="vintage" src={Slika}></img>
+    </div>);
+  }
+}
+
   export default Prva;
