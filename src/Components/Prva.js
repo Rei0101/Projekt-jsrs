@@ -17,7 +17,6 @@ export class Prva extends Component {
         </h1>
         <form>
           <input
-            required
             placeholder="ime"
             value={this.state.ime}
             onChange={(e) => this.setState({ ime: e.target.value })}
@@ -25,19 +24,13 @@ export class Prva extends Component {
           <br></br>
           <br></br>
           <input
-            required
             placeholder="prezime"
             value={this.state.prezime}
             onChange={(e) => this.setState({ prezime: e.target.value })}
           />
           <br></br>
           <br></br>
-          <input
-            required
-            type="password"
-            placeholder="lozinka"
-            name="Password "
-          ></input>
+          <input type="password" placeholder="lozinka" name="Password "></input>
           <br></br>
           <br></br>
           Potvrdi da nisi robot:<input required type="checkbox"></input>
