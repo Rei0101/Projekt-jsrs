@@ -2,19 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Slika from "../matrix.jpg";
 import Slika2 from "../wick.jpg";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 function Cetvrta() {
-  const [filmovi, postaviFilm] = useState([
-    { naziv: "film1", redatelj: "redatelj1", zanr: "zanr1" },
-    { naziv: "film2", redatelj: "redatelj2", zanr: "zanr2" }
-  ]);
+  const [filmovi, postaviFilm] = useState([]);
   const [nazivFilma, postaviNaziv] = useState("");
   const [imeRedatelja, postaviIme] = useState("");
   const [zanr, postaviZanr] = useState("");
+  const inputRef = useRef("");
+  const brojac = useRef(0);
+  useEffect(() => {
+    brojac.current = brojac.current + 1;
+  }, [filmovi]);
 
   const handlesubmit = (e) => {
     e.preventDefault();
+    inputRef.current.focus();
     postaviFilm([
       ...filmovi,
       { naziv: nazivFilma, redatelj: imeRedatelja, zanr: zanr }
@@ -75,44 +78,50 @@ function Cetvrta() {
             </p>
           </td>
         </tr>
-        <tr>
-          <td>
-            <ul>
-              {filmovi.map((objektfilm) => (
-                <li>
-                  Naziv filma:{objektfilm.naziv}, Redatelj:{" "}
-                  {objektfilm.redatelj}, Žanr:{objektfilm.zanr}
-                </li>
-              ))}
-            </ul>
-            <form onSubmit={handlesubmit}>
-              <label>Unesi naziv filma: </label>
-              <input
-                type="text"
-                required
-                onChange={(e) => postaviNaziv(e.target.value)}
-              />
-              <br />
-              <label>Unesi ime redatelja: </label>
-              <input
-                type="text"
-                required
-                onChange={(e) => postaviIme(e.target.value)}
-              />
-              <br />
-              <label>Unesi žanr: </label>
-              <input
-                type="text"
-                required
-                onChange={(e) => postaviZanr(e.target.value)}
-              />
-              <br />
-              <br />
-              <input type="submit" value="Dodaj na listu" />
-            </form>
-          </td>
-        </tr>
       </table>
+      <h4>NAPRAVI LISTU SVOJIH NAJDRAŽIH KEANU REVEES FILMOVA</h4>
+      <table>
+        <tr>
+          <td>Naziv filma:</td>
+          <td>Redatelj:</td>
+          <td>Žanr:</td>
+        </tr>
+        {filmovi.map((objektfilm) => (
+          <tr>
+            <td>{objektfilm.naziv}</td>
+            <td>{objektfilm.redatelj}</td>
+            <td>{objektfilm.zanr}</td>
+          </tr>
+        ))}
+      </table>
+      <form onSubmit={handlesubmit}>
+        <label>Unesi naziv filma: </label>
+        <input
+          type="text"
+          required
+          ref={inputRef}
+          onChange={(e) => postaviNaziv(e.target.value)}
+        />
+        <br />
+        <label>Unesi ime redatelja: </label>
+        <input
+          type="text"
+          required
+          onChange={(e) => postaviIme(e.target.value)}
+        />
+        <br />
+        <label>Unesi žanr: </label>
+        <input
+          type="text"
+          required
+          onChange={(e) => postaviZanr(e.target.value)}
+        />
+        <br />
+        <br />
+        <input type="submit" value="Dodaj na listu" />
+      </form>
+      <br />
+      Dosad unesenih filmova: {brojac.current}
       <table>
         <tr>
           <td>
