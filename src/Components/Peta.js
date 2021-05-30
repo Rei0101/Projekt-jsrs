@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Slika from "../keanu.jpg";
 import Slika2 from "../zvijezda.jpg";
@@ -6,8 +6,10 @@ import Slika3 from "../keanutoystory.jpg";
 import Slika4 from "../keanumotor.jpg";
 import Slika5 from "../sadkeanu.jpg";
 import Slika6 from "../keanue3.jpg";
+import { LoginContext } from "../Context/LoginContext";
 
 function Peta() {
+  const { jeUlogiran, toggleLogin } = useContext(LoginContext);
   return (
     <div>
       <h1>GALERIJA</h1>
@@ -57,7 +59,7 @@ function Peta() {
         <tr>
           <td>
             <Link className="link" to="/">
-              <h3>HOME</h3>
+              <h3 onClick={() => toggleLogin()}>HOME</h3>
             </Link>
           </td>
           <td>

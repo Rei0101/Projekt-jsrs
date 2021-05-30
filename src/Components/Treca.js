@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Slika from "../keanuboy.jpg";
 import Slika2 from "../keanusuperboy.jpg";
+import { LoginContext } from "../Context/LoginContext";
 
 function Treca() {
+  const { jeUlogiran, toggleLogin } = useContext(LoginContext);
   return (
     <div>
       <p>
@@ -53,7 +55,7 @@ function Treca() {
         <tr>
           <td>
             <Link className="link" to="/">
-              <h3>HOME</h3>
+              <h3 onClick={() => toggleLogin()}>HOME</h3>
             </Link>
           </td>
           <td>

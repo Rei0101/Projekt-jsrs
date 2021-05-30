@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Slika from "../youngkeanu.jpg";
+import { LoginContext } from "../Context/LoginContext";
 
 function Druga() {
+  const { jeUlogiran, toggleLogin } = useContext(LoginContext);
   return (
     <div className="druga">
       <h1>Rani život</h1>
@@ -31,7 +33,7 @@ function Druga() {
         <tr>
           <td>
             <Link className="link" to="/">
-              <h3>HOME</h3>
+              <h3 onClick={() => toggleLogin()}>HOME</h3>
             </Link>
           </td>
           <td>

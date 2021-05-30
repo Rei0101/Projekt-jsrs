@@ -1,14 +1,19 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import Slika from "../keanujaketa.jpg";
+import { LoginContext } from "../Context/LoginContext";
 
 export class Prva extends Component {
+  static contextType = LoginContext;
+
   state = {
     ime: "",
     prezime: ""
   };
+  
 
   render() {
+    const { jeUlogiran, toggleLogin } = this.context;
     return (
       <div>
         <h1 className="promjenjivo">
@@ -37,7 +42,7 @@ export class Prva extends Component {
           <br></br>
           <br></br>
           <Link className="link" to="/druga">
-            <button>Nastavi</button>
+            <button onClick={toggleLogin}>Nastavi</button>
           </Link>
           <br></br>
           <br></br>

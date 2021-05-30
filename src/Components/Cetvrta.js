@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Slika from "../matrix.jpg";
 import Slika2 from "../wick.jpg";
 import { useState, useRef, useEffect } from "react";
+import { LoginContext } from "../Context/LoginContext";
 
 function Cetvrta() {
+  const { jeUlogiran, toggleLogin } = useContext(LoginContext);
   const [filmovi, postaviFilm] = useState([]);
   const [nazivFilma, postaviNaziv] = useState("");
   const [imeRedatelja, postaviIme] = useState("");
@@ -126,7 +128,7 @@ function Cetvrta() {
         <tr>
           <td>
             <Link className="link" to="/">
-              <h3>HOME</h3>
+              <h3 onClick={() => toggleLogin()}>HOME</h3>
             </Link>
           </td>
           <td>
